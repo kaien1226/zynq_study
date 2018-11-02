@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Oct 31 10:18:39 2018" VIVADOVERSION="2018.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Nov  2 13:23:33 2018" VIVADOVERSION="2018.2">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z010" NAME="system" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
   <EXTERNALPORTS>
     <PORT DIR="IO" LEFT="53" NAME="FIXED_IO_mio" RIGHT="0" SIGIS="undef"/>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef"/>
-    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef"/>
     <PORT DIR="IO" NAME="FIXED_IO_ps_srstb" SIGIS="undef"/>
     <PORT DIR="IO" NAME="FIXED_IO_ps_clk" SIGIS="undef"/>
     <PORT DIR="IO" NAME="FIXED_IO_ps_porb" SIGIS="undef"/>
@@ -20,6 +18,23 @@
         <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_RESET0_N"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="IO" NAME="DDR_cas_n" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="DDR_cke" SIGIS="undef"/>
+    <PORT CLKFREQUENCY="100000000" DIR="IO" NAME="DDR_ck_n" SIGIS="clk"/>
+    <PORT CLKFREQUENCY="100000000" DIR="IO" NAME="DDR_ck_p" SIGIS="clk"/>
+    <PORT DIR="IO" NAME="DDR_cs_n" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="DDR_reset_n" SIGIS="rst"/>
+    <PORT DIR="IO" NAME="DDR_odt" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="DDR_ras_n" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="DDR_we_n" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="2" NAME="DDR_ba" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="14" NAME="DDR_addr" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="3" NAME="DDR_dm" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="31" NAME="DDR_dq" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_n" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" LEFT="3" NAME="DDR_dqs_p" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrn" SIGIS="undef"/>
+    <PORT DIR="IO" NAME="FIXED_IO_ddr_vrp" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -27,11 +42,44 @@
       <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
       <PORTMAPS>
         <PORTMAP LOGICAL="MIO" PHYSICAL="FIXED_IO_mio"/>
-        <PORTMAP LOGICAL="DDR_VRN" PHYSICAL="FIXED_IO_ddr_vrn"/>
-        <PORTMAP LOGICAL="DDR_VRP" PHYSICAL="FIXED_IO_ddr_vrp"/>
         <PORTMAP LOGICAL="PS_SRSTB" PHYSICAL="FIXED_IO_ps_srstb"/>
         <PORTMAP LOGICAL="PS_CLK" PHYSICAL="FIXED_IO_ps_clk"/>
         <PORTMAP LOGICAL="PS_PORB" PHYSICAL="FIXED_IO_ps_porb"/>
+        <PORTMAP LOGICAL="DDR_VRN" PHYSICAL="FIXED_IO_ddr_vrn"/>
+        <PORTMAP LOGICAL="DDR_VRP" PHYSICAL="FIXED_IO_ddr_vrp"/>
+      </PORTMAPS>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="processing_system7_0_DDR" DATAWIDTH="8" NAME="DDR" TYPE="INITIATOR">
+      <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+      <PARAMETER NAME="TIMEPERIOD_PS" VALUE="1250"/>
+      <PARAMETER NAME="MEMORY_TYPE" VALUE="COMPONENTS"/>
+      <PARAMETER NAME="MEMORY_PART"/>
+      <PARAMETER NAME="DATA_WIDTH" VALUE="8"/>
+      <PARAMETER NAME="CS_ENABLED" VALUE="true"/>
+      <PARAMETER NAME="DATA_MASK_ENABLED" VALUE="true"/>
+      <PARAMETER NAME="SLOT" VALUE="Single"/>
+      <PARAMETER NAME="CUSTOM_PARTS"/>
+      <PARAMETER NAME="MEM_ADDR_MAP" VALUE="ROW_COLUMN_BANK"/>
+      <PARAMETER NAME="BURST_LENGTH" VALUE="8"/>
+      <PARAMETER NAME="AXI_ARBITRATION_SCHEME" VALUE="TDM"/>
+      <PARAMETER NAME="CAS_LATENCY" VALUE="11"/>
+      <PARAMETER NAME="CAS_WRITE_LATENCY" VALUE="11"/>
+      <PORTMAPS>
+        <PORTMAP LOGICAL="CAS_N" PHYSICAL="DDR_cas_n"/>
+        <PORTMAP LOGICAL="CKE" PHYSICAL="DDR_cke"/>
+        <PORTMAP LOGICAL="CK_N" PHYSICAL="DDR_ck_n"/>
+        <PORTMAP LOGICAL="CK_P" PHYSICAL="DDR_ck_p"/>
+        <PORTMAP LOGICAL="CS_N" PHYSICAL="DDR_cs_n"/>
+        <PORTMAP LOGICAL="RESET_N" PHYSICAL="DDR_reset_n"/>
+        <PORTMAP LOGICAL="ODT" PHYSICAL="DDR_odt"/>
+        <PORTMAP LOGICAL="RAS_N" PHYSICAL="DDR_ras_n"/>
+        <PORTMAP LOGICAL="WE_N" PHYSICAL="DDR_we_n"/>
+        <PORTMAP LOGICAL="BA" PHYSICAL="DDR_ba"/>
+        <PORTMAP LOGICAL="ADDR" PHYSICAL="DDR_addr"/>
+        <PORTMAP LOGICAL="DM" PHYSICAL="DDR_dm"/>
+        <PORTMAP LOGICAL="DQ" PHYSICAL="DDR_dq"/>
+        <PORTMAP LOGICAL="DQS_N" PHYSICAL="DDR_dqs_n"/>
+        <PORTMAP LOGICAL="DQS_P" PHYSICAL="DDR_dqs_p"/>
       </PORTMAPS>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
@@ -99,7 +147,7 @@
         <PARAMETER NAME="C_GP0_EN_MODIFIABLE_TXN" VALUE="1"/>
         <PARAMETER NAME="C_GP1_EN_MODIFIABLE_TXN" VALUE="1"/>
         <PARAMETER NAME="PCW_DDR_RAM_BASEADDR" VALUE="0x00100000"/>
-        <PARAMETER NAME="PCW_DDR_RAM_HIGHADDR" VALUE="0x3FFFFFFF"/>
+        <PARAMETER NAME="PCW_DDR_RAM_HIGHADDR" VALUE="0x1FFFFFFF"/>
         <PARAMETER NAME="PCW_UART0_BASEADDR" VALUE="0xE0000000"/>
         <PARAMETER NAME="PCW_UART0_HIGHADDR" VALUE="0xE0000FFF"/>
         <PARAMETER NAME="PCW_UART1_BASEADDR" VALUE="0xE0001000"/>
@@ -227,7 +275,7 @@
         <PARAMETER NAME="PCW_TTC1_CLK2_PERIPHERAL_FREQMHZ" VALUE="133.333333"/>
         <PARAMETER NAME="PCW_PCAP_PERIPHERAL_FREQMHZ" VALUE="200"/>
         <PARAMETER NAME="PCW_TPIU_PERIPHERAL_FREQMHZ" VALUE="200"/>
-        <PARAMETER NAME="PCW_FPGA0_PERIPHERAL_FREQMHZ" VALUE="50"/>
+        <PARAMETER NAME="PCW_FPGA0_PERIPHERAL_FREQMHZ" VALUE="100"/>
         <PARAMETER NAME="PCW_FPGA1_PERIPHERAL_FREQMHZ" VALUE="50"/>
         <PARAMETER NAME="PCW_FPGA2_PERIPHERAL_FREQMHZ" VALUE="50"/>
         <PARAMETER NAME="PCW_FPGA3_PERIPHERAL_FREQMHZ" VALUE="50"/>
@@ -240,7 +288,7 @@
         <PARAMETER NAME="PCW_ACT_ENET1_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_USB0_PERIPHERAL_FREQMHZ" VALUE="60"/>
         <PARAMETER NAME="PCW_ACT_USB1_PERIPHERAL_FREQMHZ" VALUE="60"/>
-        <PARAMETER NAME="PCW_ACT_SDIO_PERIPHERAL_FREQMHZ" VALUE="50.000000"/>
+        <PARAMETER NAME="PCW_ACT_SDIO_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_UART_PERIPHERAL_FREQMHZ" VALUE="100.000000"/>
         <PARAMETER NAME="PCW_ACT_SPI_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_CAN_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
@@ -251,7 +299,7 @@
         <PARAMETER NAME="PCW_ACT_TTC_PERIPHERAL_FREQMHZ" VALUE="50"/>
         <PARAMETER NAME="PCW_ACT_PCAP_PERIPHERAL_FREQMHZ" VALUE="200.000000"/>
         <PARAMETER NAME="PCW_ACT_TPIU_PERIPHERAL_FREQMHZ" VALUE="200.000000"/>
-        <PARAMETER NAME="PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ" VALUE="50.000000"/>
+        <PARAMETER NAME="PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ" VALUE="100.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
@@ -261,7 +309,7 @@
         <PARAMETER NAME="PCW_ACT_TTC1_CLK0_PERIPHERAL_FREQMHZ" VALUE="111.111115"/>
         <PARAMETER NAME="PCW_ACT_TTC1_CLK1_PERIPHERAL_FREQMHZ" VALUE="111.111115"/>
         <PARAMETER NAME="PCW_ACT_TTC1_CLK2_PERIPHERAL_FREQMHZ" VALUE="111.111115"/>
-        <PARAMETER NAME="PCW_CLK0_FREQ" VALUE="50000000"/>
+        <PARAMETER NAME="PCW_CLK0_FREQ" VALUE="100000000"/>
         <PARAMETER NAME="PCW_CLK1_FREQ" VALUE="10000000"/>
         <PARAMETER NAME="PCW_CLK2_FREQ" VALUE="10000000"/>
         <PARAMETER NAME="PCW_CLK3_FREQ" VALUE="10000000"/>
@@ -270,12 +318,12 @@
         <PARAMETER NAME="PCW_DDR_PERIPHERAL_DIVISOR0" VALUE="2"/>
         <PARAMETER NAME="PCW_SMC_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_QSPI_PERIPHERAL_DIVISOR0" VALUE="1"/>
-        <PARAMETER NAME="PCW_SDIO_PERIPHERAL_DIVISOR0" VALUE="32"/>
+        <PARAMETER NAME="PCW_SDIO_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_UART_PERIPHERAL_DIVISOR0" VALUE="16"/>
         <PARAMETER NAME="PCW_SPI_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_CAN_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_CAN_PERIPHERAL_DIVISOR1" VALUE="1"/>
-        <PARAMETER NAME="PCW_FCLK0_PERIPHERAL_DIVISOR0" VALUE="8"/>
+        <PARAMETER NAME="PCW_FCLK0_PERIPHERAL_DIVISOR0" VALUE="4"/>
         <PARAMETER NAME="PCW_FCLK1_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK2_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK3_PERIPHERAL_DIVISOR0" VALUE="1"/>
@@ -305,7 +353,7 @@
         <PARAMETER NAME="PCW_IO_IO_PLL_FREQMHZ" VALUE="1600.000"/>
         <PARAMETER NAME="PCW_DDR_DDR_PLL_FREQMHZ" VALUE="1066.667"/>
         <PARAMETER NAME="PCW_SMC_PERIPHERAL_VALID" VALUE="0"/>
-        <PARAMETER NAME="PCW_SDIO_PERIPHERAL_VALID" VALUE="1"/>
+        <PARAMETER NAME="PCW_SDIO_PERIPHERAL_VALID" VALUE="0"/>
         <PARAMETER NAME="PCW_SPI_PERIPHERAL_VALID" VALUE="0"/>
         <PARAMETER NAME="PCW_CAN_PERIPHERAL_VALID" VALUE="0"/>
         <PARAMETER NAME="PCW_UART_PERIPHERAL_VALID" VALUE="1"/>
@@ -417,7 +465,7 @@
         <PARAMETER NAME="PCW_S_AXI_HP3_ID_WIDTH" VALUE="6"/>
         <PARAMETER NAME="PCW_S_AXI_HP3_DATA_WIDTH" VALUE="64"/>
         <PARAMETER NAME="PCW_NUM_F2P_INTR_INPUTS" VALUE="1"/>
-        <PARAMETER NAME="PCW_EN_DDR" VALUE="0"/>
+        <PARAMETER NAME="PCW_EN_DDR" VALUE="1"/>
         <PARAMETER NAME="PCW_EN_SMC" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_QSPI" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_CAN0" VALUE="0"/>
@@ -428,7 +476,7 @@
         <PARAMETER NAME="PCW_EN_I2C0" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_I2C1" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_PJTAG" VALUE="0"/>
-        <PARAMETER NAME="PCW_EN_SDIO0" VALUE="1"/>
+        <PARAMETER NAME="PCW_EN_SDIO0" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_SDIO1" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_SPI0" VALUE="0"/>
         <PARAMETER NAME="PCW_EN_SPI1" VALUE="0"/>
@@ -498,17 +546,17 @@
         <PARAMETER NAME="PCW_PERIPHERAL_BOARD_PRESET" VALUE="None"/>
         <PARAMETER NAME="PCW_PRESET_BANK0_VOLTAGE" VALUE="LVCMOS 3.3V"/>
         <PARAMETER NAME="PCW_PRESET_BANK1_VOLTAGE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_ENABLE" VALUE="1"/>
         <PARAMETER NAME="PCW_UIPARAM_DDR_ADV_ENABLE" VALUE="0"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_MEMORY_TYPE" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_ECC" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_BUS_WIDTH" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_BL" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_HIGH_TEMP" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_PARTNO" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_DRAM_WIDTH" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_DEVICE_CAPACITY" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_UIPARAM_DDR_SPEED_BIN" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_MEMORY_TYPE" VALUE="DDR 3 (Low Voltage)"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_ECC" VALUE="Disabled"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_BUS_WIDTH" VALUE="32 Bit"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_BL" VALUE="8"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_HIGH_TEMP" VALUE="Normal (0-85)"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_PARTNO" VALUE="MT41K128M16 JT-125"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_DRAM_WIDTH" VALUE="16 Bits"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_DEVICE_CAPACITY" VALUE="2048 MBits"/>
+        <PARAMETER NAME="PCW_UIPARAM_DDR_SPEED_BIN" VALUE="DDR3_1066F"/>
         <PARAMETER NAME="PCW_UIPARAM_DDR_TRAIN_WRITE_LEVEL" VALUE="0"/>
         <PARAMETER NAME="PCW_UIPARAM_DDR_TRAIN_READ_GATE" VALUE="0"/>
         <PARAMETER NAME="PCW_UIPARAM_DDR_TRAIN_DATA_EYE" VALUE="0"/>
@@ -576,12 +624,12 @@
         <PARAMETER NAME="PCW_ENET1_GRP_MDIO_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_ENET1_RESET_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_ENET1_RESET_IO" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_SD0_PERIPHERAL_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="PCW_SD0_SD0_IO" VALUE="MIO 16 .. 21"/>
-        <PARAMETER NAME="PCW_SD0_GRP_CD_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="PCW_SD0_GRP_CD_IO" VALUE="MIO 22"/>
-        <PARAMETER NAME="PCW_SD0_GRP_WP_ENABLE" VALUE="1"/>
-        <PARAMETER NAME="PCW_SD0_GRP_WP_IO" VALUE="MIO 23"/>
+        <PARAMETER NAME="PCW_SD0_PERIPHERAL_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_SD0_SD0_IO" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_SD0_GRP_CD_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_SD0_GRP_CD_IO" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_SD0_GRP_WP_ENABLE" VALUE="0"/>
+        <PARAMETER NAME="PCW_SD0_GRP_WP_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_SD0_GRP_POW_ENABLE" VALUE="0"/>
         <PARAMETER NAME="PCW_SD0_GRP_POW_IO" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_SD1_PERIPHERAL_ENABLE" VALUE="0"/>
@@ -770,38 +818,38 @@
         <PARAMETER NAME="PCW_MIO_15_IOTYPE" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_MIO_15_DIRECTION" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_MIO_15_SLEW" VALUE="&lt;Select>"/>
-        <PARAMETER NAME="PCW_MIO_16_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_16_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_16_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_16_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_17_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_17_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_17_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_17_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_18_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_18_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_18_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_18_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_19_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_19_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_19_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_19_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_20_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_20_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_20_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_20_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_21_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_21_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_21_DIRECTION" VALUE="inout"/>
-        <PARAMETER NAME="PCW_MIO_21_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_22_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_22_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_22_DIRECTION" VALUE="in"/>
-        <PARAMETER NAME="PCW_MIO_22_SLEW" VALUE="slow"/>
-        <PARAMETER NAME="PCW_MIO_23_PULLUP" VALUE="enabled"/>
-        <PARAMETER NAME="PCW_MIO_23_IOTYPE" VALUE="LVCMOS 3.3V"/>
-        <PARAMETER NAME="PCW_MIO_23_DIRECTION" VALUE="in"/>
-        <PARAMETER NAME="PCW_MIO_23_SLEW" VALUE="slow"/>
+        <PARAMETER NAME="PCW_MIO_16_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_16_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_16_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_16_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_17_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_17_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_17_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_17_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_18_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_18_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_18_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_18_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_19_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_19_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_19_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_19_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_20_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_20_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_20_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_20_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_21_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_21_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_21_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_21_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_22_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_22_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_22_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_22_SLEW" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_23_PULLUP" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_23_IOTYPE" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_23_DIRECTION" VALUE="&lt;Select>"/>
+        <PARAMETER NAME="PCW_MIO_23_SLEW" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_MIO_24_PULLUP" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_MIO_24_IOTYPE" VALUE="&lt;Select>"/>
         <PARAMETER NAME="PCW_MIO_24_DIRECTION" VALUE="&lt;Select>"/>
@@ -924,8 +972,8 @@
         <PARAMETER NAME="PCW_MIO_53_SLEW" VALUE="&lt;Select>"/>
         <PARAMETER NAME="preset" VALUE="None"/>
         <PARAMETER NAME="PCW_UIPARAM_GENERATE_SUMMARY" VALUE="NA"/>
-        <PARAMETER NAME="PCW_MIO_TREE_PERIPHERALS" VALUE="unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#UART 1#UART 1#unassigned#unassigned#unassigned#unassigned"/>
-        <PARAMETER NAME="PCW_MIO_TREE_SIGNALS" VALUE="unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#clk#cmd#data[0]#data[1]#data[2]#data[3]#cd#wp#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#tx#rx#unassigned#unassigned#unassigned#unassigned"/>
+        <PARAMETER NAME="PCW_MIO_TREE_PERIPHERALS" VALUE="unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#UART 1#UART 1#unassigned#unassigned#unassigned#unassigned"/>
+        <PARAMETER NAME="PCW_MIO_TREE_SIGNALS" VALUE="unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#unassigned#tx#rx#unassigned#unassigned#unassigned#unassigned"/>
         <PARAMETER NAME="PCW_PS7_SI_REV" VALUE="PRODUCTION"/>
         <PARAMETER NAME="PCW_FPGA_FCLK0_ENABLE" VALUE="1"/>
         <PARAMETER NAME="PCW_FPGA_FCLK1_ENABLE" VALUE="0"/>
@@ -979,7 +1027,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="50000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
@@ -990,15 +1038,67 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="IO" LEFT="53" NAME="MIO" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_CAS_n" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_CKE" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_Clk_n" SIGIS="clk"/>
+        <PORT DIR="IO" NAME="DDR_Clk" SIGIS="clk"/>
+        <PORT DIR="IO" NAME="DDR_CS_n" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_DRSTB" SIGIS="rst"/>
+        <PORT DIR="IO" NAME="DDR_ODT" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_RAS_n" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_WEB" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="2" NAME="DDR_BankAddr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="14" NAME="DDR_Addr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_VRN" SIGIS="undef"/>
+        <PORT DIR="IO" NAME="DDR_VRP" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="3" NAME="DDR_DM" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="31" NAME="DDR_DQ" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="3" NAME="DDR_DQS_n" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="IO" LEFT="3" NAME="DDR_DQS" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="IO" NAME="PS_SRSTB" SIGIS="undef"/>
         <PORT DIR="IO" NAME="PS_CLK" SIGIS="undef"/>
         <PORT DIR="IO" NAME="PS_PORB" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
+        <BUSINTERFACE BUSNAME="processing_system7_0_DDR" DATAWIDTH="8" NAME="DDR" TYPE="INITIATOR" VLNV="xilinx.com:interface:ddrx:1.0">
+          <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
+          <PARAMETER NAME="TIMEPERIOD_PS" VALUE="1250"/>
+          <PARAMETER NAME="MEMORY_TYPE" VALUE="COMPONENTS"/>
+          <PARAMETER NAME="MEMORY_PART"/>
+          <PARAMETER NAME="DATA_WIDTH" VALUE="8"/>
+          <PARAMETER NAME="CS_ENABLED" VALUE="true"/>
+          <PARAMETER NAME="DATA_MASK_ENABLED" VALUE="true"/>
+          <PARAMETER NAME="SLOT" VALUE="Single"/>
+          <PARAMETER NAME="CUSTOM_PARTS"/>
+          <PARAMETER NAME="MEM_ADDR_MAP" VALUE="ROW_COLUMN_BANK"/>
+          <PARAMETER NAME="BURST_LENGTH" VALUE="8"/>
+          <PARAMETER NAME="AXI_ARBITRATION_SCHEME" VALUE="TDM"/>
+          <PARAMETER NAME="CAS_LATENCY" VALUE="11"/>
+          <PARAMETER NAME="CAS_WRITE_LATENCY" VALUE="11"/>
+          <PORTMAPS>
+            <PORTMAP LOGICAL="CAS_N" PHYSICAL="DDR_CAS_n"/>
+            <PORTMAP LOGICAL="CKE" PHYSICAL="DDR_CKE"/>
+            <PORTMAP LOGICAL="CK_N" PHYSICAL="DDR_Clk_n"/>
+            <PORTMAP LOGICAL="CK_P" PHYSICAL="DDR_Clk"/>
+            <PORTMAP LOGICAL="CS_N" PHYSICAL="DDR_CS_n"/>
+            <PORTMAP LOGICAL="RESET_N" PHYSICAL="DDR_DRSTB"/>
+            <PORTMAP LOGICAL="ODT" PHYSICAL="DDR_ODT"/>
+            <PORTMAP LOGICAL="RAS_N" PHYSICAL="DDR_RAS_n"/>
+            <PORTMAP LOGICAL="WE_N" PHYSICAL="DDR_WEB"/>
+            <PORTMAP LOGICAL="BA" PHYSICAL="DDR_BankAddr"/>
+            <PORTMAP LOGICAL="ADDR" PHYSICAL="DDR_Addr"/>
+            <PORTMAP LOGICAL="DM" PHYSICAL="DDR_DM"/>
+            <PORTMAP LOGICAL="DQ" PHYSICAL="DDR_DQ"/>
+            <PORTMAP LOGICAL="DQS_N" PHYSICAL="DDR_DQS_n"/>
+            <PORTMAP LOGICAL="DQS_P" PHYSICAL="DDR_DQS"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="processing_system7_0_FIXED_IO" NAME="FIXED_IO" TYPE="INITIATOR" VLNV="xilinx.com:display_processing_system7:fixedio:1.0">
           <PARAMETER NAME="CAN_DEBUG" VALUE="false"/>
           <PORTMAPS>
             <PORTMAP LOGICAL="MIO" PHYSICAL="MIO"/>
+            <PORTMAP LOGICAL="DDR_VRN" PHYSICAL="DDR_VRN"/>
+            <PORTMAP LOGICAL="DDR_VRP" PHYSICAL="DDR_VRP"/>
             <PORTMAP LOGICAL="PS_SRSTB" PHYSICAL="PS_SRSTB"/>
             <PORTMAP LOGICAL="PS_CLK" PHYSICAL="PS_CLK"/>
             <PORTMAP LOGICAL="PS_PORB" PHYSICAL="PS_PORB"/>

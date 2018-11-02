@@ -679,3 +679,1036 @@ con
 ----------------End of Script----------------
 
 10:47:47 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello.elf_on_local.tcl'
+09:50:55 INFO  : Launching XSCT server: xsct -n -interactive /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/temp_xsdb_launch_script.tcl
+09:50:58 INFO  : XSCT server has started successfully.
+09:50:58 INFO  : Successfully done setting XSCT server connection channel  
+09:51:05 INFO  : Successfully done setting SDK workspace  
+09:51:14 INFO  : Registering command handlers for SDK TCF services
+09:51:14 INFO  : Processing command line option -hwspec /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+09:51:17 INFO  : Checking for hwspec changes in the project top_hw_platform_0.
+09:51:17 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1540963901000,  Project:1540953136000
+09:51:17 INFO  : The hardware specification for project 'top_hw_platform_0' is different from /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+09:51:17 INFO  : Copied contents of /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf into /top_hw_platform_0/system.hdf.
+09:51:20 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+09:51:23 INFO  : 
+09:51:23 INFO  : Updating hardware inferred compiler options for hello.
+09:51:24 INFO  : Clearing existing target manager status.
+09:51:24 INFO  : Closing and re-opening the MSS file of ther project hello_bsp
+09:51:24 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+09:51:25 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:00:08 INFO  : Launching XSCT server: xsct -n -interactive /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/temp_xsdb_launch_script.tcl
+10:00:10 INFO  : XSCT server has started successfully.
+10:00:12 INFO  : Successfully done setting XSCT server connection channel  
+10:00:12 INFO  : Successfully done setting SDK workspace  
+10:00:13 INFO  : Registering command handlers for SDK TCF services
+10:00:15 INFO  : Processing command line option -hwspec /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+10:00:16 INFO  : Checking for hwspec changes in the project top_hw_platform_0.
+10:00:16 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1541123849000,  Project:1540963901000
+10:00:16 INFO  : The hardware specification for project 'top_hw_platform_0' is different from /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+10:00:16 INFO  : Copied contents of /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf into /top_hw_platform_0/system.hdf.
+10:00:18 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:00:19 INFO  : Clearing existing target manager status.
+10:00:19 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:00:19 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:01:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:03:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:03:01 INFO  : 'fpga -state' command is executed.
+10:03:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:03:02 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:03:02 INFO  : 'jtag frequency' command is executed.
+10:03:02 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:03:02 INFO  : Context for 'APU' is selected.
+10:03:02 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:03:02 INFO  : 'configparams force-mem-access 1' command is executed.
+10:03:02 INFO  : Context for 'APU' is selected.
+10:03:02 INFO  : 'stop' command is executed.
+10:03:02 INFO  : 'ps7_init' command is executed.
+10:03:02 INFO  : 'ps7_post_config' command is executed.
+10:03:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:02 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:03:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:03 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello2/Debug/hello2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:03:03 INFO  : 'configparams force-mem-access 0' command is executed.
+10:03:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello2/Debug/hello2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:03:03 INFO  : Memory regions updated for context APU
+10:03:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:03 INFO  : 'con' command is executed.
+10:03:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:03:03 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello2.elf_on_local.tcl'
+10:03:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:03:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:03:17 INFO  : FPGA configured successfully with bitstream "/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.runs/impl_1/top.bit"
+10:03:34 INFO  : Disconnected from the channel tcfchan#1.
+10:03:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:03:35 INFO  : 'fpga -state' command is executed.
+10:03:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:03:36 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:03:36 INFO  : 'jtag frequency' command is executed.
+10:03:36 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:03:36 INFO  : Context for 'APU' is selected.
+10:03:38 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:03:38 INFO  : 'configparams force-mem-access 1' command is executed.
+10:03:38 INFO  : Context for 'APU' is selected.
+10:03:38 INFO  : 'stop' command is executed.
+10:03:38 INFO  : 'ps7_init' command is executed.
+10:03:38 INFO  : 'ps7_post_config' command is executed.
+10:03:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:38 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:03:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:38 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello2/Debug/hello2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:03:38 INFO  : 'configparams force-mem-access 0' command is executed.
+10:03:38 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello2/Debug/hello2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:03:38 INFO  : Memory regions updated for context APU
+10:03:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:03:39 INFO  : 'con' command is executed.
+10:03:39 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:03:39 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello2.elf_on_local.tcl'
+10:50:45 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1541126366000,  Project:1541123849000
+10:50:45 INFO  : Project top_hw_platform_0's source hardware specification located at /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+10:51:41 INFO  : Copied contents of /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf into /top_hw_platform_0/system.hdf.
+10:51:44 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+10:51:45 INFO  : 
+10:51:45 INFO  : Updating hardware inferred compiler options for hello2.
+10:51:49 INFO  : Clearing existing target manager status.
+10:51:49 INFO  : Closing and re-opening the MSS file of ther project hello2_bsp
+10:51:50 INFO  : Closing and re-opening the MSS file of ther project hello2_bsp
+10:51:50 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+10:51:57 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+10:53:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:53:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:53:13 INFO  : FPGA configured successfully with bitstream "/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.runs/impl_1/top.bit"
+10:53:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:53:36 INFO  : 'fpga -state' command is executed.
+10:53:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:53:37 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:53:37 INFO  : 'jtag frequency' command is executed.
+10:53:37 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:53:37 INFO  : Context for 'APU' is selected.
+10:53:37 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:53:37 INFO  : 'configparams force-mem-access 1' command is executed.
+10:53:37 INFO  : Context for 'APU' is selected.
+10:53:37 INFO  : 'stop' command is executed.
+10:53:37 INFO  : 'ps7_init' command is executed.
+10:53:37 INFO  : 'ps7_post_config' command is executed.
+10:53:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:53:37 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:53:37 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:53:38 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:53:38 INFO  : 'configparams force-mem-access 0' command is executed.
+10:53:38 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:53:38 INFO  : Memory regions updated for context APU
+10:53:38 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:53:38 INFO  : 'con' command is executed.
+10:53:38 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:53:38 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello3.elf_on_local.tcl'
+10:54:20 INFO  : Disconnected from the channel tcfchan#2.
+10:54:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:54:21 INFO  : 'fpga -state' command is executed.
+10:54:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:54:21 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:54:21 INFO  : 'jtag frequency' command is executed.
+10:54:21 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:54:21 INFO  : Context for 'APU' is selected.
+10:54:21 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:54:21 INFO  : 'configparams force-mem-access 1' command is executed.
+10:54:21 INFO  : Context for 'APU' is selected.
+10:54:21 INFO  : 'stop' command is executed.
+10:54:22 INFO  : 'ps7_init' command is executed.
+10:54:22 INFO  : 'ps7_post_config' command is executed.
+10:54:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:54:22 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:54:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:54:22 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:54:22 INFO  : 'configparams force-mem-access 0' command is executed.
+10:54:22 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:54:22 INFO  : Memory regions updated for context APU
+10:54:22 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:54:22 INFO  : 'con' command is executed.
+10:54:22 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:54:22 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello3.elf_on_local.tcl'
+10:54:41 WARN  : channel "tcfchan#2" closed
+10:54:57 INFO  : Disconnected from the channel tcfchan#3.
+10:55:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:55:00 INFO  : 'fpga -state' command is executed.
+10:55:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:55:00 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:55:00 INFO  : 'jtag frequency' command is executed.
+10:55:00 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:55:00 INFO  : Context for 'APU' is selected.
+10:55:00 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:55:00 INFO  : 'configparams force-mem-access 1' command is executed.
+10:55:00 INFO  : Context for 'APU' is selected.
+10:55:00 INFO  : 'stop' command is executed.
+10:55:01 INFO  : 'ps7_init' command is executed.
+10:55:01 INFO  : 'ps7_post_config' command is executed.
+10:55:01 INFO  : 'configparams force-mem-access 0' command is executed.
+10:55:01 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:55:01 INFO  : Memory regions updated for context APU
+10:55:01 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello2.elf_on_local.tcl'
+10:55:05 INFO  : Disconnected from the channel tcfchan#4.
+10:55:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:55:15 INFO  : 'fpga -state' command is executed.
+10:55:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:55:15 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:55:15 INFO  : 'jtag frequency' command is executed.
+10:55:15 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:55:15 INFO  : Context for 'APU' is selected.
+10:55:15 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:55:15 INFO  : 'configparams force-mem-access 1' command is executed.
+10:55:15 INFO  : Context for 'APU' is selected.
+10:55:15 INFO  : 'stop' command is executed.
+10:55:16 INFO  : 'ps7_init' command is executed.
+10:55:16 INFO  : 'ps7_post_config' command is executed.
+10:55:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:55:16 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:55:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:55:16 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:55:16 INFO  : 'configparams force-mem-access 0' command is executed.
+10:55:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello3/Debug/hello3.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:55:16 INFO  : Memory regions updated for context APU
+10:55:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:55:16 INFO  : 'con' command is executed.
+10:55:16 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:55:16 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello3.elf_on_local.tcl'
+10:55:45 INFO  : Disconnected from the channel tcfchan#5.
+10:55:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:55:46 INFO  : 'fpga -state' command is executed.
+10:55:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:55:46 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:55:46 INFO  : 'jtag frequency' command is executed.
+10:55:46 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:55:46 INFO  : Context for 'APU' is selected.
+10:55:46 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:55:46 INFO  : 'configparams force-mem-access 1' command is executed.
+10:55:46 INFO  : Context for 'APU' is selected.
+10:55:47 INFO  : 'stop' command is executed.
+10:55:47 ERROR : Memory read error at 0xF8007080. AHB AP transaction error, DAP status f0000021
+10:55:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+10:56:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:56:27 INFO  : 'fpga -state' command is executed.
+10:56:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:56:27 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:56:27 INFO  : 'jtag frequency' command is executed.
+10:56:27 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:56:27 INFO  : Context for 'APU' is selected.
+10:56:27 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:56:27 INFO  : 'configparams force-mem-access 1' command is executed.
+10:56:27 INFO  : Context for 'APU' is selected.
+10:56:28 INFO  : 'stop' command is executed.
+10:56:28 ERROR : AP transaction error, DAP status f0000021
+10:56:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+10:57:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:57:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:57:31 ERROR : fpga configuration failed. DONE PIN is not HIGH
+10:58:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:58:16 INFO  : 'fpga -state' command is executed.
+10:58:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:58:17 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:58:17 INFO  : 'jtag frequency' command is executed.
+10:58:17 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:58:17 INFO  : Context for 'APU' is selected.
+10:58:17 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:58:17 INFO  : 'configparams force-mem-access 1' command is executed.
+10:58:17 INFO  : Context for 'APU' is selected.
+10:58:17 INFO  : 'stop' command is executed.
+10:58:17 INFO  : 'ps7_init' command is executed.
+10:58:17 INFO  : 'ps7_post_config' command is executed.
+10:58:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:58:17 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+10:58:17 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:58:18 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello4/Debug/hello4.elf' is downloaded to processor 'ps7_cortexa9_0'.
+10:58:18 INFO  : 'configparams force-mem-access 0' command is executed.
+10:58:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello4/Debug/hello4.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+10:58:18 INFO  : Memory regions updated for context APU
+10:58:18 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+10:58:18 INFO  : 'con' command is executed.
+10:58:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+10:58:18 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello4.elf_on_local.tcl'
+10:58:35 INFO  : Disconnected from the channel tcfchan#6.
+10:58:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+10:58:36 INFO  : 'fpga -state' command is executed.
+10:58:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+10:58:36 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+10:58:36 INFO  : 'jtag frequency' command is executed.
+10:58:36 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+10:58:36 INFO  : Context for 'APU' is selected.
+10:58:36 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+10:58:36 INFO  : 'configparams force-mem-access 1' command is executed.
+10:58:36 INFO  : Context for 'APU' is selected.
+10:58:37 INFO  : 'stop' command is executed.
+10:58:37 ERROR : Memory read error at 0xF8007080. AHB AP transaction error, DAP status f0000021
+10:58:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+11:07:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:07:01 INFO  : 'fpga -state' command is executed.
+11:07:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:07:01 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:07:01 INFO  : 'jtag frequency' command is executed.
+11:07:01 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:07:01 INFO  : Context for 'APU' is selected.
+11:07:01 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:07:01 INFO  : 'configparams force-mem-access 1' command is executed.
+11:07:01 INFO  : Context for 'APU' is selected.
+11:07:01 INFO  : 'stop' command is executed.
+11:07:02 INFO  : 'ps7_init' command is executed.
+11:07:02 INFO  : 'ps7_post_config' command is executed.
+11:07:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:07:02 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+11:07:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:07:02 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello4/Debug/hello4.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:07:02 INFO  : 'configparams force-mem-access 0' command is executed.
+11:07:02 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello4/Debug/hello4.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:07:02 INFO  : Memory regions updated for context APU
+11:07:02 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:07:03 INFO  : 'con' command is executed.
+11:07:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+11:07:03 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello4.elf_on_local.tcl'
+11:07:20 INFO  : Disconnected from the channel tcfchan#7.
+11:07:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:07:22 INFO  : 'fpga -state' command is executed.
+11:07:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:07:22 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:07:22 INFO  : 'jtag frequency' command is executed.
+11:07:22 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:07:22 INFO  : Context for 'APU' is selected.
+11:07:22 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:07:22 INFO  : 'configparams force-mem-access 1' command is executed.
+11:07:22 INFO  : Context for 'APU' is selected.
+11:07:22 INFO  : 'stop' command is executed.
+11:07:22 ERROR : Memory read error at 0xF8007080. AHB AP transaction error, DAP status f0000021
+11:07:22 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+11:07:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:07:27 INFO  : 'fpga -state' command is executed.
+11:07:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:07:28 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:07:28 INFO  : 'jtag frequency' command is executed.
+11:07:28 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:07:28 INFO  : Context for 'APU' is selected.
+11:07:28 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:07:28 INFO  : 'configparams force-mem-access 1' command is executed.
+11:07:28 INFO  : Context for 'APU' is selected.
+11:07:28 INFO  : 'stop' command is executed.
+11:07:28 ERROR : AP transaction error, DAP status f0000021
+11:07:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+11:07:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:07:37 INFO  : 'fpga -state' command is executed.
+11:07:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:07:37 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:07:37 INFO  : 'jtag frequency' command is executed.
+11:07:37 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:07:37 INFO  : Context for 'APU' is selected.
+11:07:37 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:07:37 INFO  : 'configparams force-mem-access 1' command is executed.
+11:07:37 INFO  : Context for 'APU' is selected.
+11:07:37 INFO  : 'stop' command is executed.
+11:07:37 ERROR : AP transaction error, DAP status f0000021
+11:07:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+11:13:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:13:44 INFO  : 'fpga -state' command is executed.
+11:13:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:13:44 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:13:44 INFO  : 'jtag frequency' command is executed.
+11:13:44 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:13:44 INFO  : Context for 'APU' is selected.
+11:13:44 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:13:44 INFO  : 'configparams force-mem-access 1' command is executed.
+11:13:44 INFO  : Context for 'APU' is selected.
+11:13:44 INFO  : 'stop' command is executed.
+11:13:44 ERROR : AP transaction error, DAP status f0000021
+11:13:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+11:13:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+11:13:54 INFO  : 'fpga -state' command is executed.
+11:13:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:13:55 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+11:13:55 INFO  : 'jtag frequency' command is executed.
+11:13:55 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+11:13:55 INFO  : Context for 'APU' is selected.
+11:13:55 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+11:13:55 INFO  : 'configparams force-mem-access 1' command is executed.
+11:13:55 INFO  : Context for 'APU' is selected.
+11:13:55 INFO  : 'stop' command is executed.
+11:13:55 ERROR : AP transaction error, DAP status f0000021
+11:13:55 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:16:36 INFO  : Registering command handlers for SDK TCF services
+13:16:37 INFO  : Launching XSCT server: xsct -n -interactive /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/temp_xsdb_launch_script.tcl
+13:16:39 INFO  : XSCT server has started successfully.
+13:16:39 INFO  : Successfully done setting XSCT server connection channel  
+13:16:39 INFO  : Successfully done setting SDK workspace  
+13:16:39 INFO  : Processing command line option -hwspec /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+13:16:39 INFO  : Checking for hwspec changes in the project top_hw_platform_0.
+13:16:41 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1541135754000,  Project:1541126366000
+13:16:41 INFO  : The hardware specification for project 'top_hw_platform_0' is different from /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf.
+13:16:41 INFO  : Copied contents of /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf into /top_hw_platform_0/system.hdf.
+13:16:43 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:16:44 INFO  : 
+13:16:45 INFO  : Updating hardware inferred compiler options for hello4.
+13:16:55 INFO  : Clearing existing target manager status.
+13:18:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:18:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:18:32 INFO  : FPGA configured successfully with bitstream "/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.runs/impl_1/top.bit"
+13:18:40 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:18:40 INFO  : 'fpga -state' command is executed.
+13:18:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:18:40 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:18:40 INFO  : 'jtag frequency' command is executed.
+13:18:40 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:18:40 INFO  : Context for 'APU' is selected.
+13:18:40 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:18:40 INFO  : 'configparams force-mem-access 1' command is executed.
+13:18:40 INFO  : Context for 'APU' is selected.
+13:18:41 INFO  : 'stop' command is executed.
+13:18:41 INFO  : 'ps7_init' command is executed.
+13:18:41 INFO  : 'ps7_post_config' command is executed.
+13:18:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:18:41 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:18:41 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:18:42 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello5/Debug/hello5.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:18:42 INFO  : 'configparams force-mem-access 0' command is executed.
+13:18:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello5/Debug/hello5.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:18:42 INFO  : Memory regions updated for context APU
+13:18:42 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:18:42 INFO  : 'con' command is executed.
+13:18:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:18:42 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello5.elf_on_local.tcl'
+13:18:54 INFO  : Disconnected from the channel tcfchan#1.
+13:18:55 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:18:55 INFO  : 'fpga -state' command is executed.
+13:18:55 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:18:56 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:18:56 INFO  : 'jtag frequency' command is executed.
+13:18:56 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:18:56 INFO  : Context for 'APU' is selected.
+13:18:57 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:18:57 INFO  : 'configparams force-mem-access 1' command is executed.
+13:18:57 INFO  : Context for 'APU' is selected.
+13:18:57 INFO  : 'stop' command is executed.
+13:18:57 ERROR : Memory read error at 0xF8007080. AHB AP transaction error, DAP status f0000021
+13:18:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:21:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:21:15 INFO  : 'fpga -state' command is executed.
+13:21:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:21:15 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:21:15 INFO  : 'jtag frequency' command is executed.
+13:21:15 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:21:15 INFO  : Context for 'APU' is selected.
+13:21:15 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:21:15 INFO  : 'configparams force-mem-access 1' command is executed.
+13:21:15 INFO  : Context for 'APU' is selected.
+13:21:16 INFO  : 'stop' command is executed.
+13:21:16 ERROR : AP transaction error, DAP status f0000021
+13:21:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:21:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:21:32 INFO  : 'fpga -state' command is executed.
+13:21:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:21:32 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:21:32 INFO  : 'jtag frequency' command is executed.
+13:21:32 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:21:32 INFO  : Context for 'APU' is selected.
+13:21:32 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:21:32 INFO  : 'configparams force-mem-access 1' command is executed.
+13:21:32 INFO  : Context for 'APU' is selected.
+13:21:32 INFO  : 'stop' command is executed.
+13:21:32 ERROR : AP transaction error, DAP status f0000021
+13:21:32 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:22:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:22:21 INFO  : 'fpga -state' command is executed.
+13:22:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:22:22 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:22:22 INFO  : 'jtag frequency' command is executed.
+13:22:22 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:22:22 INFO  : Context for 'APU' is selected.
+13:22:22 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:22:22 INFO  : 'configparams force-mem-access 1' command is executed.
+13:22:22 INFO  : Context for 'APU' is selected.
+13:22:22 INFO  : 'stop' command is executed.
+13:22:22 ERROR : AP transaction error, DAP status f0000021
+13:22:22 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:27:09 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1541136398000,  Project:1541135754000
+13:27:09 INFO  : Project top_hw_platform_0's source hardware specification located at /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+13:27:10 INFO  : Copied contents of /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top.hdf into /top_hw_platform_0/system.hdf.
+13:27:12 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+13:27:13 INFO  : 
+13:27:14 INFO  : 
+13:27:15 INFO  : Updating hardware inferred compiler options for ddr.
+13:27:15 INFO  : Updating hardware inferred compiler options for hello5.
+13:27:16 INFO  : Clearing existing target manager status.
+13:27:16 INFO  : Closing and re-opening the MSS file of ther project hello5_bsp
+13:27:16 INFO  : Closing and re-opening the MSS file of ther project ddr_bsp
+13:27:16 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+13:27:18 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+13:28:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:28:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:28:32 ERROR : fpga configuration failed. DONE PIN is not HIGH
+13:28:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:28:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:28:50 INFO  : FPGA configured successfully with bitstream "/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.runs/impl_1/top.bit"
+13:28:59 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:28:59 INFO  : 'fpga -state' command is executed.
+13:28:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:28:59 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:28:59 INFO  : 'jtag frequency' command is executed.
+13:28:59 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:28:59 INFO  : Context for 'APU' is selected.
+13:28:59 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:28:59 INFO  : 'configparams force-mem-access 1' command is executed.
+13:28:59 INFO  : Context for 'APU' is selected.
+13:28:59 INFO  : 'stop' command is executed.
+13:28:59 INFO  : 'ps7_init' command is executed.
+13:28:59 INFO  : 'ps7_post_config' command is executed.
+13:28:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:28:59 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:28:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:29:00 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/ddr2/Debug/ddr2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:29:00 INFO  : 'configparams force-mem-access 0' command is executed.
+13:29:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/ddr2/Debug/ddr2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:29:00 INFO  : Memory regions updated for context APU
+13:29:00 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:29:00 INFO  : 'con' command is executed.
+13:29:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:29:00 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_ddr2.elf_on_local.tcl'
+13:29:10 INFO  : Disconnected from the channel tcfchan#2.
+13:29:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:29:11 INFO  : 'fpga -state' command is executed.
+13:29:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:29:11 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:29:11 INFO  : 'jtag frequency' command is executed.
+13:29:11 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:29:11 INFO  : Context for 'APU' is selected.
+13:29:11 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:29:11 INFO  : 'configparams force-mem-access 1' command is executed.
+13:29:11 INFO  : Context for 'APU' is selected.
+13:29:12 INFO  : 'stop' command is executed.
+13:29:12 INFO  : 'ps7_init' command is executed.
+13:29:12 INFO  : 'ps7_post_config' command is executed.
+13:29:12 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:29:12 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:29:12 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:29:12 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/ddr2/Debug/ddr2.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:29:12 INFO  : 'configparams force-mem-access 0' command is executed.
+13:29:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/ddr2/Debug/ddr2.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:29:13 INFO  : Memory regions updated for context APU
+13:29:13 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:29:13 INFO  : 'con' command is executed.
+13:29:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:29:13 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_ddr2.elf_on_local.tcl'
+13:30:25 INFO  : Disconnected from the channel tcfchan#3.
+13:30:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:30:26 INFO  : 'fpga -state' command is executed.
+13:30:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:30:26 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:30:26 INFO  : 'jtag frequency' command is executed.
+13:30:26 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:30:26 INFO  : Context for 'APU' is selected.
+13:30:26 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:30:26 INFO  : 'configparams force-mem-access 1' command is executed.
+13:30:26 INFO  : Context for 'APU' is selected.
+13:30:26 INFO  : 'stop' command is executed.
+13:30:27 INFO  : 'ps7_init' command is executed.
+13:30:27 INFO  : 'ps7_post_config' command is executed.
+13:30:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:27 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:30:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:27 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:30:27 INFO  : 'configparams force-mem-access 0' command is executed.
+13:30:27 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:30:27 INFO  : Memory regions updated for context APU
+13:30:28 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:28 INFO  : 'con' command is executed.
+13:30:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:30:28 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello6.elf_on_local.tcl'
+13:30:44 INFO  : Disconnected from the channel tcfchan#4.
+13:30:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:30:45 INFO  : 'fpga -state' command is executed.
+13:30:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:30:45 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:30:45 INFO  : 'jtag frequency' command is executed.
+13:30:45 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:30:45 INFO  : Context for 'APU' is selected.
+13:30:45 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:30:45 INFO  : 'configparams force-mem-access 1' command is executed.
+13:30:45 INFO  : Context for 'APU' is selected.
+13:30:45 INFO  : 'stop' command is executed.
+13:30:46 INFO  : 'ps7_init' command is executed.
+13:30:46 INFO  : 'ps7_post_config' command is executed.
+13:30:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:46 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:30:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:46 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:30:46 INFO  : 'configparams force-mem-access 0' command is executed.
+13:30:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:30:46 INFO  : Memory regions updated for context APU
+13:30:46 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:30:46 INFO  : 'con' command is executed.
+13:30:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:30:46 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello6.elf_on_local.tcl'
+13:30:56 INFO  : Disconnected from the channel tcfchan#5.
+13:30:57 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:30:57 INFO  : 'fpga -state' command is executed.
+13:30:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:30:58 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:30:58 INFO  : 'jtag frequency' command is executed.
+13:30:58 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:30:58 INFO  : Context for 'APU' is selected.
+13:30:58 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:30:58 INFO  : 'configparams force-mem-access 1' command is executed.
+13:30:58 INFO  : Context for 'APU' is selected.
+13:30:58 INFO  : 'stop' command is executed.
+13:30:58 ERROR : Memory read error at 0xF8007080. AHB AP transaction error, DAP status f0000021
+13:30:58 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:31:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:31:17 INFO  : 'fpga -state' command is executed.
+13:31:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:31:17 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:31:17 INFO  : 'jtag frequency' command is executed.
+13:31:17 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:31:17 INFO  : Context for 'APU' is selected.
+13:31:17 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:31:17 INFO  : 'configparams force-mem-access 1' command is executed.
+13:31:17 INFO  : Context for 'APU' is selected.
+13:31:17 INFO  : 'stop' command is executed.
+13:31:17 ERROR : AP transaction error, DAP status f0000021
+13:31:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+----------------End of Script----------------
+
+13:31:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:31:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:31:36 ERROR : fpga configuration failed. DONE PIN is not HIGH
+13:31:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:31:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:31:55 INFO  : FPGA configured successfully with bitstream "/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.runs/impl_1/top.bit"
+13:32:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "Platform Cable USB 00001902ed1101" && level==0} -index 1' command is executed.
+13:32:03 INFO  : 'fpga -state' command is executed.
+13:32:03 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:32:03 INFO  : Jtag cable 'Platform Cable USB 00001902ed1101' is selected.
+13:32:03 INFO  : 'jtag frequency' command is executed.
+13:32:03 INFO  : Sourcing of '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl' is done.
+13:32:03 INFO  : Context for 'APU' is selected.
+13:32:03 INFO  : Hardware design information is loaded from '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf'.
+13:32:03 INFO  : 'configparams force-mem-access 1' command is executed.
+13:32:03 INFO  : Context for 'APU' is selected.
+13:32:03 INFO  : 'stop' command is executed.
+13:32:04 INFO  : 'ps7_init' command is executed.
+13:32:04 INFO  : 'ps7_post_config' command is executed.
+13:32:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:32:04 INFO  : Processor reset is completed for 'ps7_cortexa9_0'.
+13:32:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:32:04 INFO  : The application '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:32:04 INFO  : 'configparams force-mem-access 0' command is executed.
+13:32:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+loadhw -hw /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/top_hw_platform_0/system.hdf -mem-ranges [list {0x40000000 0xbfffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+stop
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+dow /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/hello6/Debug/hello6.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:32:04 INFO  : Memory regions updated for context APU
+13:32:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:32:05 INFO  : 'con' command is executed.
+13:32:05 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "ARM*#0" && jtag_cable_name =~ "Platform Cable USB 00001902ed1101"} -index 0
+con
+----------------End of Script----------------
+
+13:32:05 INFO  : Launch script is exported to file '/home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.sdk/.sdk/launch_scripts/xilinx_c-c++_application_(system_debugger)/system_debugger_using_debug_hello6.elf_on_local.tcl'
+13:33:45 INFO  : Disconnected from the channel tcfchan#6.

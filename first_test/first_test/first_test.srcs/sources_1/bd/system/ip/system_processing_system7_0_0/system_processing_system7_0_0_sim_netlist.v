@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-// Date        : Wed Oct 31 10:19:42 2018
+// Date        : Fri Nov  2 13:24:29 2018
 // Host        : zhengyuanbo-ThinkPad-T540p running 64-bit Ubuntu 16.04.5 LTS
 // Command     : write_verilog -force -mode funcsim
 //               /home/zhengyuanbo/project/xilinx/first_test/first_test/first_test.srcs/sources_1/bd/system/ip/system_processing_system7_0_0/system_processing_system7_0_0_sim_netlist.v
@@ -18,16 +18,67 @@ module system_processing_system7_0_0
    (FCLK_CLK0,
     FCLK_RESET0_N,
     MIO,
+    DDR_CAS_n,
+    DDR_CKE,
+    DDR_Clk_n,
+    DDR_Clk,
+    DDR_CS_n,
+    DDR_DRSTB,
+    DDR_ODT,
+    DDR_RAS_n,
+    DDR_WEB,
+    DDR_BankAddr,
+    DDR_Addr,
+    DDR_VRN,
+    DDR_VRP,
+    DDR_DM,
+    DDR_DQ,
+    DDR_DQS_n,
+    DDR_DQS,
     PS_SRSTB,
     PS_CLK,
     PS_PORB);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0" *) output FCLK_CLK0;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN system_processing_system7_0_0_FCLK_CLK0" *) output FCLK_CLK0;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 FCLK_RESET0_N RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FCLK_RESET0_N, POLARITY ACTIVE_LOW" *) output FCLK_RESET0_N;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO" *) inout [53:0]MIO;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_CAS_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CKE" *) inout DDR_CKE;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CK_N" *) inout DDR_Clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CK_P" *) inout DDR_Clk;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CS_N" *) inout DDR_CS_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR RESET_N" *) inout DDR_DRSTB;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ODT" *) inout DDR_ODT;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR RAS_N" *) inout DDR_RAS_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR WE_N" *) inout DDR_WEB;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_BankAddr;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) inout [14:0]DDR_Addr;
+  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN" *) inout DDR_VRN;
+  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP" *) inout DDR_VRP;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DM" *) inout [3:0]DDR_DM;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQ" *) inout [31:0]DDR_DQ;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_N" *) inout [3:0]DDR_DQS_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_P" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, CAN_DEBUG false, TIMEPERIOD_PS 1250, MEMORY_TYPE COMPONENTS, DATA_WIDTH 8, CS_ENABLED true, DATA_MASK_ENABLED true, SLOT Single, MEM_ADDR_MAP ROW_COLUMN_BANK, BURST_LENGTH 8, AXI_ARBITRATION_SCHEME TDM, CAS_LATENCY 11, CAS_WRITE_LATENCY 11" *) inout [3:0]DDR_DQS;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout PS_SRSTB;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout PS_CLK;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false" *) inout PS_PORB;
 
+  wire [14:0]DDR_Addr;
+  wire [2:0]DDR_BankAddr;
+  wire DDR_CAS_n;
+  wire DDR_CKE;
+  wire DDR_CS_n;
+  wire DDR_Clk;
+  wire DDR_Clk_n;
+  wire [3:0]DDR_DM;
+  wire [31:0]DDR_DQ;
+  wire [3:0]DDR_DQS;
+  wire [3:0]DDR_DQS_n;
+  wire DDR_DRSTB;
+  wire DDR_ODT;
+  wire DDR_RAS_n;
+  wire DDR_VRN;
+  wire DDR_VRP;
+  wire DDR_WEB;
   wire FCLK_CLK0;
   wire FCLK_RESET0_N;
   wire [53:0]MIO;
@@ -36,17 +87,6 @@ module system_processing_system7_0_0
   wire PS_SRSTB;
   wire NLW_inst_CAN0_PHY_TX_UNCONNECTED;
   wire NLW_inst_CAN1_PHY_TX_UNCONNECTED;
-  wire NLW_inst_DDR_CAS_n_UNCONNECTED;
-  wire NLW_inst_DDR_CKE_UNCONNECTED;
-  wire NLW_inst_DDR_CS_n_UNCONNECTED;
-  wire NLW_inst_DDR_Clk_UNCONNECTED;
-  wire NLW_inst_DDR_Clk_n_UNCONNECTED;
-  wire NLW_inst_DDR_DRSTB_UNCONNECTED;
-  wire NLW_inst_DDR_ODT_UNCONNECTED;
-  wire NLW_inst_DDR_RAS_n_UNCONNECTED;
-  wire NLW_inst_DDR_VRN_UNCONNECTED;
-  wire NLW_inst_DDR_VRP_UNCONNECTED;
-  wire NLW_inst_DDR_WEB_UNCONNECTED;
   wire NLW_inst_DMA0_DAVALID_UNCONNECTED;
   wire NLW_inst_DMA0_DRREADY_UNCONNECTED;
   wire NLW_inst_DMA0_RSTN_UNCONNECTED;
@@ -252,12 +292,6 @@ module system_processing_system7_0_0
   wire NLW_inst_USB0_VBUS_PWRSELECT_UNCONNECTED;
   wire NLW_inst_USB1_VBUS_PWRSELECT_UNCONNECTED;
   wire NLW_inst_WDT_RST_OUT_UNCONNECTED;
-  wire [14:0]NLW_inst_DDR_Addr_UNCONNECTED;
-  wire [2:0]NLW_inst_DDR_BankAddr_UNCONNECTED;
-  wire [3:0]NLW_inst_DDR_DM_UNCONNECTED;
-  wire [31:0]NLW_inst_DDR_DQ_UNCONNECTED;
-  wire [3:0]NLW_inst_DDR_DQS_UNCONNECTED;
-  wire [3:0]NLW_inst_DDR_DQS_n_UNCONNECTED;
   wire [1:0]NLW_inst_DMA0_DATYPE_UNCONNECTED;
   wire [1:0]NLW_inst_DMA1_DATYPE_UNCONNECTED;
   wire [1:0]NLW_inst_DMA2_DATYPE_UNCONNECTED;
@@ -428,7 +462,7 @@ module system_processing_system7_0_0
   (* C_USE_S_AXI_HP2 = "0" *) 
   (* C_USE_S_AXI_HP3 = "0" *) 
   (* HW_HANDOFF = "system_processing_system7_0_0.hwdef" *) 
-  (* POWER = "<PROCESSOR name={system} numA9Cores={2} clockFreq={666.666666} load={0.5} /><MEMORY name={code} memType={} dataWidth={} clockFreq={533.333} readRate={0.5} writeRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={100.000000} usageRate={0.5} /><IO interface={SD} ioStandard={LVCMOS33} bidis={8} ioBank={Vcco_p1} clockFreq={50.000000} usageRate={0.5} /><PLL domain={Processor} vco={1333.333} /><PLL domain={Memory} vco={1066.667} /><PLL domain={IO} vco={1600.000} />/>" *) 
+  (* POWER = "<PROCESSOR name={system} numA9Cores={2} clockFreq={666.666666} load={0.5} /><MEMORY name={code} memType={DDR3(LowVoltage)} dataWidth={32} clockFreq={533.333} readRate={0.5} writeRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={100.000000} usageRate={0.5} /><PLL domain={Processor} vco={1333.333} /><PLL domain={Memory} vco={1066.667} /><PLL domain={IO} vco={1600.000} />/>" *) 
   (* USE_TRACE_DATA_EDGE_DETECTOR = "0" *) 
   system_processing_system7_0_0_processing_system7_v5_5_processing_system7 inst
        (.CAN0_PHY_RX(1'b0),
@@ -440,23 +474,23 @@ module system_processing_system7_0_0
         .Core1_nFIQ(1'b0),
         .Core1_nIRQ(1'b0),
         .DDR_ARB({1'b0,1'b0,1'b0,1'b0}),
-        .DDR_Addr(NLW_inst_DDR_Addr_UNCONNECTED[14:0]),
-        .DDR_BankAddr(NLW_inst_DDR_BankAddr_UNCONNECTED[2:0]),
-        .DDR_CAS_n(NLW_inst_DDR_CAS_n_UNCONNECTED),
-        .DDR_CKE(NLW_inst_DDR_CKE_UNCONNECTED),
-        .DDR_CS_n(NLW_inst_DDR_CS_n_UNCONNECTED),
-        .DDR_Clk(NLW_inst_DDR_Clk_UNCONNECTED),
-        .DDR_Clk_n(NLW_inst_DDR_Clk_n_UNCONNECTED),
-        .DDR_DM(NLW_inst_DDR_DM_UNCONNECTED[3:0]),
-        .DDR_DQ(NLW_inst_DDR_DQ_UNCONNECTED[31:0]),
-        .DDR_DQS(NLW_inst_DDR_DQS_UNCONNECTED[3:0]),
-        .DDR_DQS_n(NLW_inst_DDR_DQS_n_UNCONNECTED[3:0]),
-        .DDR_DRSTB(NLW_inst_DDR_DRSTB_UNCONNECTED),
-        .DDR_ODT(NLW_inst_DDR_ODT_UNCONNECTED),
-        .DDR_RAS_n(NLW_inst_DDR_RAS_n_UNCONNECTED),
-        .DDR_VRN(NLW_inst_DDR_VRN_UNCONNECTED),
-        .DDR_VRP(NLW_inst_DDR_VRP_UNCONNECTED),
-        .DDR_WEB(NLW_inst_DDR_WEB_UNCONNECTED),
+        .DDR_Addr(DDR_Addr),
+        .DDR_BankAddr(DDR_BankAddr),
+        .DDR_CAS_n(DDR_CAS_n),
+        .DDR_CKE(DDR_CKE),
+        .DDR_CS_n(DDR_CS_n),
+        .DDR_Clk(DDR_Clk),
+        .DDR_Clk_n(DDR_Clk_n),
+        .DDR_DM(DDR_DM),
+        .DDR_DQ(DDR_DQ),
+        .DDR_DQS(DDR_DQS),
+        .DDR_DQS_n(DDR_DQS_n),
+        .DDR_DRSTB(DDR_DRSTB),
+        .DDR_ODT(DDR_ODT),
+        .DDR_RAS_n(DDR_RAS_n),
+        .DDR_VRN(DDR_VRN),
+        .DDR_VRP(DDR_VRP),
+        .DDR_WEB(DDR_WEB),
         .DMA0_ACLK(1'b0),
         .DMA0_DAREADY(1'b0),
         .DMA0_DATYPE(NLW_inst_DMA0_DATYPE_UNCONNECTED[1:0]),
@@ -1137,7 +1171,7 @@ endmodule
 (* C_USE_S_AXI_ACP = "0" *) (* C_USE_S_AXI_GP0 = "0" *) (* C_USE_S_AXI_GP1 = "0" *) 
 (* C_USE_S_AXI_HP0 = "0" *) (* C_USE_S_AXI_HP1 = "0" *) (* C_USE_S_AXI_HP2 = "0" *) 
 (* C_USE_S_AXI_HP3 = "0" *) (* HW_HANDOFF = "system_processing_system7_0_0.hwdef" *) (* ORIG_REF_NAME = "processing_system7_v5_5_processing_system7" *) 
-(* POWER = "<PROCESSOR name={system} numA9Cores={2} clockFreq={666.666666} load={0.5} /><MEMORY name={code} memType={} dataWidth={} clockFreq={533.333} readRate={0.5} writeRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={100.000000} usageRate={0.5} /><IO interface={SD} ioStandard={LVCMOS33} bidis={8} ioBank={Vcco_p1} clockFreq={50.000000} usageRate={0.5} /><PLL domain={Processor} vco={1333.333} /><PLL domain={Memory} vco={1066.667} /><PLL domain={IO} vco={1600.000} />/>" *) (* USE_TRACE_DATA_EDGE_DETECTOR = "0" *) 
+(* POWER = "<PROCESSOR name={system} numA9Cores={2} clockFreq={666.666666} load={0.5} /><MEMORY name={code} memType={DDR3(LowVoltage)} dataWidth={32} clockFreq={533.333} readRate={0.5} writeRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p1} clockFreq={100.000000} usageRate={0.5} /><PLL domain={Processor} vco={1333.333} /><PLL domain={Memory} vco={1066.667} /><PLL domain={IO} vco={1600.000} />/>" *) (* USE_TRACE_DATA_EDGE_DETECTOR = "0" *) 
 module system_processing_system7_0_0_processing_system7_v5_5_processing_system7
    (CAN0_PHY_TX,
     CAN0_PHY_RX,

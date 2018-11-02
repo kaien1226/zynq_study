@@ -33,7 +33,7 @@
 
 module top
    (
-   /*DDR_addr,
+   DDR_addr,
     DDR_ba,
     DDR_cas_n,
     DDR_ck_n,
@@ -47,10 +47,10 @@ module top
     DDR_odt,
     DDR_ras_n,
     DDR_reset_n,
-    DDR_we_n,*/
+    DDR_we_n,
     
-    //FIXED_IO_ddr_vrn,
-    //FIXED_IO_ddr_vrp,
+    FIXED_IO_ddr_vrn,
+    FIXED_IO_ddr_vrp,
     FIXED_IO_mio,
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
@@ -58,7 +58,7 @@ module top
     
     LED
     );
-  /*inout [14:0]DDR_addr;
+  inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
   inout DDR_ck_n;
@@ -73,9 +73,9 @@ module top
   inout DDR_ras_n;
   inout DDR_reset_n;
   inout DDR_we_n;
-  */
-  //inout FIXED_IO_ddr_vrn;
-  //inout FIXED_IO_ddr_vrp;
+  
+  inout FIXED_IO_ddr_vrn;
+  inout FIXED_IO_ddr_vrp;
   inout [53:0]FIXED_IO_mio;
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
@@ -100,8 +100,8 @@ module top
   wire DDR_we_n;
   wire FCLK_CLK0;
   wire FCLK_RESET0_N;
- // wire FIXED_IO_ddr_vrn;
- // wire FIXED_IO_ddr_vrp;
+  wire FIXED_IO_ddr_vrn;
+  wire FIXED_IO_ddr_vrp;
   wire [53:0]FIXED_IO_mio;
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
@@ -122,7 +122,7 @@ module top
 
   system_wrapper u_system_wrapper
        (
-       /*.DDR_addr(DDR_addr),
+       .DDR_addr(DDR_addr),
         .DDR_ba(DDR_ba),
         .DDR_cas_n(DDR_cas_n),
         .DDR_ck_n(DDR_ck_n),
@@ -136,11 +136,11 @@ module top
         .DDR_odt(DDR_odt),
         .DDR_ras_n(DDR_ras_n),
         .DDR_reset_n(DDR_reset_n),
-        .DDR_we_n(DDR_we_n),*/
+        .DDR_we_n(DDR_we_n),
         .FCLK_CLK0(FCLK_CLK0),
         .FCLK_RESET0_N(FCLK_RESET0_N),
-       // .FIXED_IO_ddr_vrn(FIXED_IO_ddr_vrn),
-       // .FIXED_IO_ddr_vrp(FIXED_IO_ddr_vrp),
+        .FIXED_IO_ddr_vrn(FIXED_IO_ddr_vrn),
+        .FIXED_IO_ddr_vrp(FIXED_IO_ddr_vrp),
         .FIXED_IO_mio(FIXED_IO_mio),
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),

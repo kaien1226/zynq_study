@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date             : Wed Oct 31 10:31:55 2018
+| Date             : Fri Nov  2 13:15:39 2018
 | Host             : zhengyuanbo-ThinkPad-T540p running 64-bit Ubuntu 16.04.5 LTS
 | Command          : report_power -file top_power_routed.rpt -pb top_power_summary_routed.pb -rpx top_power_routed.rpx
 | Design           : top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.740        |
+| Total On-Chip Power (W)  | 1.646        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.638        |
-| Device Static (W)        | 0.102        |
+| Dynamic (W)              | 1.527        |
+| Device Static (W)        | 0.120        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 76.5         |
-| Junction Temperature (C) | 33.5         |
+| Max Ambient (C)          | 66.0         |
+| Junction Temperature (C) | 44.0         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -60,9 +60,9 @@ Table of Contents
 |   Others       |     0.000 |      135 |       --- |             --- |
 | Signals        |    <0.001 |       31 |       --- |             --- |
 | I/O            |    <0.001 |        1 |       100 |            1.00 |
-| PS7            |     0.637 |        1 |       --- |             --- |
-| Static Power   |     0.102 |          |           |                 |
-| Total          |     0.740 |          |           |                 |
+| PS7            |     1.525 |        1 |       --- |             --- |
+| Static Power   |     0.120 |          |           |                 |
+| Total          |     1.646 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,8 +72,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.005 |       0.000 |      0.005 |
-| Vccaux    |       1.800 |     0.006 |       0.000 |      0.006 |
+| Vccint    |       1.000 |     0.008 |       0.001 |      0.007 |
+| Vccaux    |       1.800 |     0.008 |       0.000 |      0.008 |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
@@ -85,12 +85,12 @@ Table of Contents
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | MGTVccaux |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccpint   |       1.000 |     0.628 |       0.608 |      0.021 |
-| Vccpaux   |       1.800 |     0.010 |       0.000 |      0.010 |
+| Vccpint   |       1.000 |     0.751 |       0.721 |      0.030 |
+| Vccpaux   |       1.800 |     0.061 |       0.050 |      0.010 |
 | Vccpll    |       1.800 |     0.018 |       0.015 |      0.003 |
-| Vcco_ddr  |       1.500 |     0.000 |       0.000 |      0.000 |
+| Vcco_ddr  |       1.500 |     0.459 |       0.457 |      0.002 |
 | Vcco_mio0 |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vcco_mio1 |       1.800 |     0.002 |       0.001 |      0.001 |
+| Vcco_mio1 |       1.800 |     0.001 |       0.000 |      0.001 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
 +-----------+-------------+-----------+-------------+------------+
 
@@ -135,7 +135,7 @@ Table of Contents
 +------------+----------------------------------------------------------------------------+-----------------+
 | Clock      | Domain                                                                     | Constraint (ns) |
 +------------+----------------------------------------------------------------------------+-----------------+
-| clk_fpga_0 | u_system_wrapper/system_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |            20.0 |
+| clk_fpga_0 | u_system_wrapper/system_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |            10.0 |
 +------------+----------------------------------------------------------------------------+-----------------+
 
 
@@ -148,11 +148,11 @@ Table of Contents
 +----------------------------+-----------+
 | Name                       | Power (W) |
 +----------------------------+-----------+
-| top                        |     0.638 |
-|   u_system_wrapper         |     0.637 |
-|     system_i               |     0.637 |
-|       processing_system7_0 |     0.637 |
-|         inst               |     0.637 |
+| top                        |     1.527 |
+|   u_system_wrapper         |     1.525 |
+|     system_i               |     1.525 |
+|       processing_system7_0 |     1.525 |
+|         inst               |     1.525 |
 +----------------------------+-----------+
 
 
