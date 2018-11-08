@@ -1,0 +1,128 @@
+16:15:45 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:15:57 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:16:36 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:17:02 **** Auto Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hello3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building target: hello3.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hello3_bsp/ps7_cortexa9_0/lib -o "hello3.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: hello3.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size hello3.elf  |tee "hello3.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19412	   1144	  22568	  43124	   a874	hello3.elf
+Finished building: hello3.elf.size
+ 
+16:17:13 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:18:06 **** Auto Build of configuration Debug for project mem ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/memorytest.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/memorytest.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../mem_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/memorytest.d" -MT"src/memorytest.o" -o "src/memorytest.o" "../src/memorytest.c"
+Finished building: ../src/memorytest.c
+ 
+Building target: mem.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../mem_bsp/ps7_cortexa9_0/lib -o "mem.elf"  ./src/memory_config_g.o ./src/memorytest.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: mem.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size mem.elf  |tee "mem.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  28432	   1184	  14392	  44008	   abe8	mem.elf
+Finished building: mem.elf.size
+ 
+16:18:18 **** Incremental Build of configuration Debug for project mem ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:19:52 **** Auto Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hello3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:56:9: warning: unused variable 'i' [-Wunused-variable]
+     int i = 0;
+         ^
+Finished building: ../src/helloworld.c
+ 
+Building target: hello3.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hello3_bsp/ps7_cortexa9_0/lib -o "hello3.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: hello3.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size hello3.elf  |tee "hello3.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19420	   1144	  22568	  43132	   a87c	hello3.elf
+Finished building: hello3.elf.size
+ 
+16:20:13 **** Auto Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../hello3_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:56:9: warning: unused variable 'i' [-Wunused-variable]
+     int i;
+         ^
+Finished building: ../src/helloworld.c
+ 
+Building target: hello3.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../hello3_bsp/ps7_cortexa9_0/lib -o "hello3.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: hello3.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size hello3.elf  |tee "hello3.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19412	   1144	  22568	  43124	   a874	hello3.elf
+Finished building: hello3.elf.size
+ 
+16:20:26 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:20:48 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
+16:21:30 **** Incremental Build of configuration Debug for project hello3 ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+make: Nothing to be done for 'main-build'.
