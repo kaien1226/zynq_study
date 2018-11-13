@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Sun Nov 11 15:31:53 2018
+# Process ID: 7389
+# Current directory: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_processing_system7_0_0_synth_1
+# Command line: vivado -log system_processing_system7_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_processing_system7_0_0.tcl
+# Log file: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_processing_system7_0_0_synth_1/system_processing_system7_0_0.vds
+# Journal file: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_processing_system7_0_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source system_processing_system7_0_0.tcl -notrace

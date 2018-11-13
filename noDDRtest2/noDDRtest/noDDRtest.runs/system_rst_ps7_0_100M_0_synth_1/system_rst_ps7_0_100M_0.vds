@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Nov  8 16:09:08 2018
+# Process ID: 10352
+# Current directory: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_rst_ps7_0_100M_0_synth_1
+# Command line: vivado -log system_rst_ps7_0_100M_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_rst_ps7_0_100M_0.tcl
+# Log file: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_rst_ps7_0_100M_0_synth_1/system_rst_ps7_0_100M_0.vds
+# Journal file: /home/zhengyuanbo/project/xilinx/noDDRtest2/noDDRtest/noDDRtest.runs/system_rst_ps7_0_100M_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source system_rst_ps7_0_100M_0.tcl -notrace
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP system_rst_ps7_0_100M_0, cache-ID = 65cc58c4531230e3.
+INFO: [Common 17-206] Exiting Vivado at Thu Nov  8 16:09:18 2018...
