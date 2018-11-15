@@ -1,0 +1,51 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.8.5  2018-01-30 bk=1.4354 VDI=40 GEI=35 GUI=JA:1.6 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -y -220 -defaultsOSRD
+preplace port FCLK_RESET0_N -pg 1 -y -110 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y -170 -defaultsOSRD
+preplace port FCLK_CLK0 -pg 1 -y -140 -defaultsOSRD
+preplace inst axi_dma_0 -pg 1 -lvl 4 -y -370 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 6 -y -320 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 5 -y -230 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -y -50 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -y -290 -defaultsOSRD
+preplace inst algorithm_top_0 -pg 1 -lvl 3 -y -560 -defaultsOSRD
+preplace inst axis_data_fifo_0 -pg 1 -lvl 2 -y -350 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 7 -y -240 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 7 2 2590 -220 N
+preplace netloc algorithm_top_0_m_axis_tvalid 1 3 1 1060
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 7 270 -720 N -720 N -720 N -720 N -720 N -720 2570
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 5 250 -490 660 -410 1090 -530 N -530 1800
+preplace netloc axi_smc_M00_AXI 1 6 1 2100
+preplace netloc axis_data_fifo_0_m_axis_tdata 1 2 1 630
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 9 -130 -170 N -170 660 -40 N -40 N -40 N -40 N -40 2560 -110 N
+preplace netloc axi_dma_0_s_axis_s2mm_tready 1 3 1 1050
+preplace netloc axi_dma_0_s2mm_introut 1 4 1 1570
+preplace netloc axi_dma_0_M_AXI_MM2S 1 4 2 1600 -350 N
+preplace netloc xlconcat_0_dout 1 5 2 1810 -200 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 7 2 2580 -170 N
+preplace netloc algorithm_top_0_M_AXIS 1 3 1 1130
+preplace netloc axis_data_fifo_0_m_axis_tlast 1 2 1 690
+preplace netloc algorithm_top_0_m_axis_tlast 1 3 1 1070
+preplace netloc algorithm_top_0_m_axis_tstrb 1 3 1 1110
+preplace netloc axis_data_fifo_0_m_axis_tkeep 1 2 1 650
+preplace netloc axi_dma_0_mm2s_introut 1 4 1 1580
+preplace netloc axi_dma_0_M_AXI_S2MM 1 4 2 1590 -330 N
+preplace netloc axis_data_fifo_0_M_AXIS 1 2 1 620
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 9 -130 -390 240 -500 670 -710 1080 -540 N -540 1810 -410 2110 -140 2570 -140 N
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 2 N -50 1100
+preplace netloc axi_dma_0_M_AXIS_MM2S 1 1 4 260 -730 NJ -730 N -730 1580
+preplace netloc algorithm_top_0_s_axis_tready 1 2 1 680
+preplace netloc axis_data_fifo_0_m_axis_tvalid 1 2 1 640
+preplace netloc algorithm_top_0_m_axis_tdata 1 3 1 1120
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 1 1 260
+levelinfo -pg 1 -150 60 447 870 1350 1700 1960 2340 2620 2660 -top -790 -bot 320
+",
+}
+{
+   da_axi4_cnt: "3",
+   da_clkrst_cnt: "1",
+   da_ps7_cnt: "1",
+}
