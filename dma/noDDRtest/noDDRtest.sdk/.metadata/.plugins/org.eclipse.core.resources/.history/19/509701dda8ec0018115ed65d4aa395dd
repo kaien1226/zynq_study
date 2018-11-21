@@ -1,0 +1,87 @@
+#include "platform.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "ff.h"
+#include "xdevcfg.h"
+#include <stdio.h>
+
+static FATFS fatfs;
+
+int SD_Init()
+{
+    FRESULT rc;
+    rc = f_mount(&fatfs,"",0);
+    if(rc)
+    {
+        xil_printf("ERROR: f_mount returned %d\r\n",rc);
+        return XST_FAILURE;
+    }
+    return XST_SUCCESS;
+}
+
+void bmp_load(char *bmp,u8 *frame)
+{
+    short y,x;
+    short XImage,YImage;
+    FIL fil;
+    u32 iPixelAddr = 0;
+    FRESULT res;
+    unsigned char TMPBUF[64];
+    unsigned char line_buf[1024];
+    u32 br;
+
+    res = f_open(&fil,bmp,FA_OPEN_EXISTING | FA_READ);
+    if(res != FR_OK)
+    {
+        return;
+    }
+    res = f_read(&fil,&TMPBUF,54,&br);
+    xil_printf("brValue:%d",br);
+    if(res != FR_OK)
+    {
+        return;
+    }
+    XImage = (unsigned short int)TMPBUF[19]*256 + TMPBUF[18]; //这里计算的是图像的Width和Height
+    YImage = (unsigned short int)TMPBUF[23]*256 + TMPBUF[22];
+
+    xil_printf("Begin%d ",TMPBUF[11]);xil_printf("%dEnd",TMPBUF[10]); //这里表明前多少数据是无效的
+
+    xil_printf("%d",XImage);
+    xil_printf("%dEnd",YImage);
+    //从前64个数据里之后，图像数据从第1079开始，-54是因为前面已经读取了54个数据了
+    //这里的1078是直接手算的，并不是程序算的。
+    res = f_read(&fil,&line_buf,1078-54,&br);
+    xil_printf("BR%d",br);
+    int i;
+
+    f_read(&fil,frame,200*200,&br);
+    xil_printf("N%d K%d K%d,",br,frame[0],frame[200*200-1]);
+
+    xil_printf("Yes");
+    f_close(&fil);
+}
+
+int main()
+{
+    init_platform();
+    int rc;
+
+    xil_printf("hello");
+
+    rc = SD_Init();
+    if(XST_SUCCESS != rc)
+    {
+        xil_printf("fail to init SD Card.");
+    }
+    else
+    {
+        xil_printf("success to init SD Card.");
+    }
+
+    u8 frameGet[200*200];
+    bmp_load("1.bmp",&frameGet);
+    xil_printf("V%d V%d",frameGet[0],frameGet[200*200-1]);//输出两个像素点的值
+
+    cleanup_platform();
+    return 0;
+}

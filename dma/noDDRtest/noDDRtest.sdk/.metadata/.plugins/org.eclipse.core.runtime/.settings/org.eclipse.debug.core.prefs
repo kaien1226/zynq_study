@@ -3,4 +3,4 @@
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.postmortemLaunchType=org.eclipse.cdt.dsf.gdb.launch.coreCLaunch,debug,;
 //org.eclipse.debug.core.PREFERRED_DELEGATES/org.eclipse.cdt.launch.remoteApplicationLaunchType=org.eclipse.rse.remotecdt.dsf.debug,debug,;
 eclipse.preferences.version=1
-prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<watchExpressions>\n<expression enabled\="true" text\="i"/>\n<expression enabled\="true" text\="Value"/>\n<expression enabled\="true" text\="RxDone"/>\n<expression enabled\="true" text\="Status"/>\n<expression enabled\="true" text\="TxDone"/>\n</watchExpressions>\n
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<watchExpressions>\n<expression enabled\="true" text\="dest_str"/>\n<expression enabled\="true" text\="hex"/>\n<expression enabled\="true" text\="rc"/>\n<expression enabled\="true" text\="ch"/>\n</watchExpressions>\n

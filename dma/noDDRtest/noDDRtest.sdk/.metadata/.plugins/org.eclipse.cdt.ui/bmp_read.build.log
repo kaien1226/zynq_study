@@ -1,0 +1,40 @@
+15:45:57 **** Auto Build of configuration Debug for project bmp_read ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+ 
+Building file: ../src/memorytest.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/memorytest.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../bmp_read_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/memorytest.d" -MT"src/memorytest.o" -o "src/memorytest.o" "../src/memorytest.c"
+../src/memorytest.c: In function 'main':
+../src/memorytest.c:156:27: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     SD_Transfer_read(FILE,(u8)dest_str,(len+1));
+                           ^
+../src/memorytest.c:159:18: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
+     char *p_ch = dest_str;
+                  ^~~~~~~~
+../src/memorytest.c:146:16: warning: unused variable 'src_str' [-Wunused-variable]
+     const char src_str[] = "hsp test sd card write and read!";
+                ^~~~~~~
+Finished building: ../src/memorytest.c
+ 
+Building target: bmp_read.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../bmp_read_bsp/ps7_cortexa9_0/lib -o "bmp_read.elf"  ./src/memory_config_g.o ./src/memorytest.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+./src/memorytest.o: In function `SD_Init':
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:24: undefined reference to `f_mount'
+makefile:39: recipe for target 'bmp_read.elf' failed
+./src/memorytest.o: In function `SD_Transfer_read':
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:39: undefined reference to `f_open'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:45: undefined reference to `f_lseek'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:51: undefined reference to `f_read'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:57: undefined reference to `f_close'
+./src/memorytest.o: In function `SD_Transfer_write':
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:72: undefined reference to `f_open'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:78: undefined reference to `f_lseek'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:84: undefined reference to `f_write'
+/home/zhengyuanbo/project/xilinx/dma/noDDRtest/noDDRtest.sdk/bmp_read/Debug/../src/memorytest.c:90: undefined reference to `f_close'
+collect2: error: ld returned 1 exit status
+make: *** [bmp_read.elf] Error 1
+
+15:45:57 Build Finished (took 418ms)
+
