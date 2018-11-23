@@ -1,0 +1,281 @@
+/******************************************************************************
+*
+* Copyright (C) 2009 - 2014 Xilinx, Inc.  All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* Use of the Software is limited solely to applications:
+* (a) running on a Xilinx device, or
+* (b) that interact with a Xilinx device through a bus or interconnect.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+* OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* Except as contained in this notice, the name of the Xilinx shall not be used
+* in advertising or otherwise to promote the sale, use or other dealings in
+* this Software without prior written authorization from Xilinx.
+*
+******************************************************************************/
+
+/*#include <stdio.h>
+#include "xparameters.h"
+#include "xil_types.h"
+#include "xstatus.h"
+#include "xil_testmem.h"
+
+#include "platform.h"
+#include "memory_config.h"
+#include "xil_printf.h"*/
+
+#include "dma_intr.h"
+#include "sys_intr.h"
+
+#include <string.h>
+#include "platform.h"
+#include "xparameters.h"
+
+#include "xil_printf.h"
+#include "ff.h"
+#include "xdevcfg.h"
+
+static FATFS fatfs;
+
+
+static XScuGic Intc; //GIC中断控制器
+static XAxiDma AxiDma;
+
+int Tries = 6;
+int i;
+int Index;
+u8 *TxBufferPtr= (u8 *)TX_BUFFER_BASE;
+u8 *RxBufferPtr= (u8 *)RX_BUFFER_BASE;
+
+u8 *RxBufferPtr1 = (u8 *)BUFFER1_BASE;
+u8 *RxBufferPtr2 = (u8 *)BUFFER2_BASE;
+
+u8 Value;
+
+/*
+ * memory_test.c: Test memory ranges present in the Hardware Design.
+ *
+ * This application runs with D-Caches disabled. As a result cacheline requests
+ * will not be generated.
+ *
+ * For MicroBlaze/PowerPC, the BSP doesn't enable caches and this application
+ * enables only I-Caches. For ARM, the BSP enables caches by default, so this
+ * application disables D-Caches before running memory tests.
+ */
+/*
+void putnum(unsigned int num);
+
+void test_memory_range(struct memory_range_s *range) {
+    XStatus status;
+
+
+
+    print("Testing memory region: "); print(range->name);  print("\n\r");
+    print("    Memory Controller: "); print(range->ip);  print("\n\r");
+    #ifdef __MICROBLAZE__
+        print("         Base Address: 0x"); putnum(range->base); print("\n\r");
+        print("                 Size: 0x"); putnum(range->size); print (" bytes \n\r");
+    #else
+        xil_printf("         Base Address: 0x%lx \n\r",range->base);
+        xil_printf("                 Size: 0x%lx bytes \n\r",range->size);
+    #endif
+
+    status = Xil_TestMem32((u32*)range->base, 1024, 0xAAAA5555, XIL_TESTMEM_ALLMEMTESTS);
+    print("          32-bit test: "); print(status == XST_SUCCESS? "PASSED!":"FAILED!"); print("\n\r");
+
+    status = Xil_TestMem16((u16*)range->base, 2048, 0xAA55, XIL_TESTMEM_ALLMEMTESTS);
+    print("          16-bit test: "); print(status == XST_SUCCESS? "PASSED!":"FAILED!"); print("\n\r");
+
+    status = Xil_TestMem8((u8*)range->base, 4096, 0xA5, XIL_TESTMEM_ALLMEMTESTS);
+    print("           8-bit test: "); print(status == XST_SUCCESS? "PASSED!":"FAILED!"); print("\n\r");
+
+}
+*/
+
+
+int SD_Init()
+{
+    FRESULT rc;
+
+    rc = f_mount(&fatfs,"",0);
+    if(rc)
+    {
+        xil_printf("ERROR : f_mount returned %d\r\n",rc);
+        return XST_FAILURE;
+    }
+    return XST_SUCCESS;
+}
+
+int SD_Transfer_read(char *FileName,u32 DestinationAddress,u32 ByteLength)
+{
+    FIL fil;
+    FRESULT rc;
+    UINT br;
+
+    rc = f_open(&fil,FileName,FA_READ);
+    if(rc)
+    {
+        xil_printf("ERROR : f_open returned %d\r\n",rc);
+        return XST_FAILURE;
+    }
+    rc = f_lseek(&fil, 0);
+    if(rc)
+    {
+        xil_printf("ERROR : f_lseek returned %d\r\n",rc);
+        return XST_FAILURE;
+    }
+    rc = f_read(&fil, (void*)DestinationAddress,ByteLength,&br);
+    if(rc)
+    {
+        xil_printf("ERROR : f_read returned %d\r\n",rc);
+        return XST_FAILURE;
+    }
+    rc = f_close(&fil);
+    if(rc)
+    {
+        xil_printf(" ERROR : f_close returned %d\r\n", rc);
+        return XST_FAILURE;
+    }
+    return XST_SUCCESS;
+}
+
+int axi_dma_test()
+{
+	int Status;
+	TxDone = 0;
+	RxDone = 0;
+	Error = 0;
+
+	xil_printf("\r\n----DMA Test----\r\n");
+	xil_printf("PKT_LEN=%d\r\n",MAX_PKT_LEN);
+
+    u32 len = 2880;
+    u32 dest_str[2880];
+    SD_Init();
+    SD_Transfer_read(FILE,(u32)dest_str,(len+1));
+
+      /*
+		Value = 0x55 + (i & 0xFF);
+	    for(Index = 0; Index < MAX_PKT_LEN; Index ++) {
+	    	TxBufferPtr[Index] = Value;
+	    	Value = (Value + 3) & 0xFF;
+	    }
+     */
+	    //Xil_DCacheFlushRange((u32)TxBufferPtr, MAX_PKT_LEN);//数据刷新到DDR中
+	    Xil_DCacheFlushRange((u32)dest_str, MAX_PKT_LEN);//数据刷新到DDR中
+
+	    Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) RxBufferPtr,//配置接收通道
+	    		MAX_PKT_LEN, XAXIDMA_DEVICE_TO_DMA);
+	    if (Status != XST_SUCCESS) {return XST_FAILURE;}
+
+	    Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) TxBufferPtr,//配置发送通道
+	    		MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
+	    if (Status != XST_SUCCESS)
+	    {
+	    	return XST_FAILURE;
+	    }
+
+	    while (!TxDone || !RxDone) { }//等待收发中断都到达
+
+	    TxDone = 0;
+	    RxDone = 0;
+	    if (Error) {return XST_FAILURE;}
+
+	    Xil_DCacheInvalidateRange((u32)RxBufferPtr, MAX_PKT_LEN);//刷新cache，观察DDR的最新数据
+	   //******** 2************
+	    //Xil_DCacheFlushRange((u32)TxBufferPtr, MAX_PKT_LEN);//数据刷新到DDR中
+
+	    Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) RxBufferPtr1,//配置接收通道
+	    		MAX_PKT_LEN, XAXIDMA_DEVICE_TO_DMA);
+	    if (Status != XST_SUCCESS) {return XST_FAILURE;}
+
+	    Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) RxBufferPtr,//配置发送通道
+	    		MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
+	    if (Status != XST_SUCCESS)
+	    {
+	    	return XST_FAILURE;
+	    }
+
+	    while (!TxDone || !RxDone) { }//等待收发中断都到达
+
+	    TxDone = 0;
+	    RxDone = 0;
+	    if (Error) {return XST_FAILURE;}
+
+	    Xil_DCacheInvalidateRange((u32)RxBufferPtr1, MAX_PKT_LEN);//刷新cache，观察DDR的最新数据
+
+		//******** 3 ************
+		//Xil_DCacheFlushRange((u32)TxBufferPtr, MAX_PKT_LEN);//数据刷新到DDR中
+
+		Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) RxBufferPtr2,//配置接收通道
+		         MAX_PKT_LEN, XAXIDMA_DEVICE_TO_DMA);
+		if (Status != XST_SUCCESS) {return XST_FAILURE;}
+
+		Status = XAxiDma_SimpleTransfer(&AxiDma,(u32) RxBufferPtr1,//配置发送通道
+		    		MAX_PKT_LEN, XAXIDMA_DMA_TO_DEVICE);
+		if (Status != XST_SUCCESS)
+		    {
+		    	return XST_FAILURE;
+		    }
+
+		while (!TxDone || !RxDone) { }//等待收发中断都到达
+
+		TxDone = 0;
+		RxDone = 0;
+		if (Error) {return XST_FAILURE;}
+
+		Xil_DCacheInvalidateRange((u32)RxBufferPtr2, MAX_PKT_LEN);//刷新cache，观察DDR的最新数据
+
+	//}
+
+	DMA_DisableIntrSystem(&Intc, TX_INTR_ID, RX_INTR_ID);//失能DMA中断
+	xil_printf("--- Exiting Test --- \r\n");
+	return XST_SUCCESS;
+}
+
+int main()
+{
+   /* int i;
+
+    init_platform();
+
+    print("--Starting Memory Test Application--\n\r");
+    print("NOTE: This application runs with D-Cache disabled.");
+    print("As a result, cacheline requests will not be generated\n\r");
+
+    for (i = 0; i < n_memory_ranges; i++) {
+        test_memory_range(&memory_ranges[i]);
+    }
+
+    print("--Memory Test Application Complete--\n\r");
+
+    cleanup_platform();
+*/
+	init_platform();
+	DMA_Intr_Init(&AxiDma,0);//DMA初始化
+	Init_Intr_System(&Intc); //系统初始化
+	Setup_Intr_Exception(&Intc);//使能硬件中断
+	DMA_Setup_Intr_System(&Intc,&AxiDma,TX_INTR_ID,RX_INTR_ID);//注册DMA收发中断
+	DMA_Intr_Enable(&Intc,&AxiDma);//使能系统中断
+	axi_dma_test();
+
+    //cleanup_platform();
+    return 0;
+
+}
